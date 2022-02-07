@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type=text/javascript>
+    $(function() {
+        $('a#test').on('click', function(e) {
+            $.getJSON('background_process_test',  // app route and function name in dashboard.py
+            function(data) {
+                // do nothing
+            });
+            return false;
+        });
+    });
+    $(function() {
+        $('a#test1').on('click', function(e) { // a#test1 corresponds to id=test1 in <a href=# id=test1><button... 
+            $.getJSON('background_process_ip', // app route and function name in dashboard.py
+            function(data) {
+                // do nothing
+            });
+            return false;
+        });
+    });
+    $(function() {
+        $('a#cpu').on('click', function(e) { // a#test1 corresponds to id=test1 in <a href=# id=test1><button... 
+            $.getJSON('background_process_cpu', // app route and function name in dashboard.py
+            function(data) {
+                // do nothing
+            });
+            return false;
+        });
+    });
+</script>
+<head>
+    <meta charset="UTF-8">
+    <title>Guest Shell Dashboard</title>
+</head>
+<body>
+   <h1>Welcome to Cisco's Guest Shell Dashboard </h1>
+    <div class='container'>
+        <h3>Send host name to console.</h3>
+            <form>
+                <a href=# id=test><button class='btn btn-default'>Get Host Name</button></a>
+            </form>
+        <h3>Send IP address to console.</h3>
+            <form>
+                <a href=# id=test1><button class='btn btn-default'>Get IP Address</button></a>
+            </form>
+        <h3>Send CPU usage to console.</h3>
+            <form>
+                <a href=# id=cpu><button class='btn btn-default'>Get CPU usage</button></a>
+            </form>
+    </div>
+</body>
+</html>
