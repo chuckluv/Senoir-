@@ -20,15 +20,22 @@
             return false;
         });
     });
-    $(function() {
-        $('a#cpu').on('click', function(e) { // a#test1 corresponds to id=test1 in <a href=# id=test1><button... 
-            $.getJSON('background_process_cpu', // app route and function name in dashboard.py
-            function(data) {
-                // do nothing
-            });
-            return false;
+
+    // this block works after page loads, no action needed
+    // see https://www.w3schools.com/xml/ajax_intro.asp
+    // and https://stackoverflow.com/questions/25446628/ajax-jquery-refresh-div-every-5-seconds
+    function cpuRefresh(){
+        $.getJSON('background_process_timed_cpu',function () { // background_process_timed_cpu' corresponds to app route
+            $(this).unwrap();
         });
-    });
+    }
+
+    cpuRefresh(); // This will run on page load, calls cpuRefresh function above, that then calls to the app route in dashboard.py
+    setInterval(function(){
+        cpuRefresh() // this will run after every 5 seconds
+    }, 5000); // time in ms
+    // end block
+
 </script>
 <head>
     <meta charset="UTF-8">

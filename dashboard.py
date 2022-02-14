@@ -25,8 +25,9 @@ def background_process_ip():
     print(s.getsockname()[0]) # gets IP
     return ("nothing")
 
-@app.route('/background_process_cpu')
-def background_process_cpu():
+
+@app.route('/background_process_timed_cpu')
+def refresh():
     print("CPU Percent\n" + str(psutil.cpu_percent()))
     print("CPU Stats\n" + str(psutil.cpu_stats()))
     print("CPU Frequency\n"  + str(psutil.cpu_freq()))

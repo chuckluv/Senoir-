@@ -1,0 +1,163 @@
+[guestshell@guestshell ~]$ python3
+Python 3.6.8 (default, Dec 22 2020, 19:04:08) 
+[GCC 8.4.1 20200928 (Red Hat 8.4.1-1)] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 
+>>> 
+>>> import cli
+>>> cli.clip("show version")
+Cisco IOS XE Software, Version BLD_V176_THROTTLE_LATEST_20210629_014221
+Cisco IOS Software [Bengaluru], ISR Software (X86_64_LINUX_IOSD-UNIVERSALK9-M), Experimental Version 17.6.20210629:014747 [S2C-build-v176_throttle-1464-/nobackup/mcpre/BLD-BLD_V176_THROTTLE_LATEST_20210629_014221 131]
+Copyright (c) 1986-2021 by Cisco Systems, Inc.
+Compiled Mon 28-Jun-21 23:43 by mcpre
+Cisco IOS-XE software, Copyright (c) 2005-2021 by cisco Systems, Inc.
+All rights reserved.  Certain components of Cisco IOS-XE software are
+licensed under the GNU General Public License ("GPL") Version 2.0.  The
+software code licensed under GPL Version 2.0 is free software that comes
+with ABSOLUTELY NO WARRANTY.  You can redistribute and/or modify such
+GPL code under the terms of GPL Version 2.0.  For more details, see the
+documentation or "License Notice" file accompanying the IOS-XE software,
+or the applicable URL provided on the flyer accompanying the IOS-XE
+software.
+ROM: 16.12(2r)
+Router uptime is 15 weeks, 5 days, 18 hours, 18 minutes
+Uptime for this control processor is 15 weeks, 5 days, 18 hours, 20 minutes
+System returned to ROM by Disabling controller-mode
+System image file is "bootflash:isr4300-universalk9.BLD_V176_THROTTLE_LATEST_20210629_014221.SSA.bin"
+Last reload reason: Disabling controller-mode
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+Suite License Information for Module:'esg' 
+--------------------------------------------------------------------------------
+Suite                 Suite Current         Type           Suite Next reboot     
+--------------------------------------------------------------------------------
+FoundationSuiteK9     FoundationSuiteK9     Smart License  FoundationSuiteK9     
+securityk9
+appxk9
+AdvUCSuiteK9          AdvUCSuiteK9          Smart License  AdvUCSuiteK9          
+uck9
+cme-srst
+cube
+Technology Package License Information: 
+-----------------------------------------------------------------
+Technology    Technology-package           Technology-package
+              Current       Type           Next reboot  
+------------------------------------------------------------------
+appxk9           appxk9           Smart License    appxk9
+uck9             None             Smart License    None
+securityk9       securityk9       Smart License    securityk9
+ipbase           ipbasek9         Smart License    ipbasek9
+The current throughput level is 50000 kbps 
+Smart Licensing Status: Registration Not Applicable/Not Applicable
+cisco ISR4321/K9 (1RU) processor with 3747245K/3071K bytes of memory.
+Processor board ID FLM1851W0B9
+Router operating mode: Autonomous
+2 Gigabit Ethernet interfaces
+32768K bytes of non-volatile configuration memory.
+8388608K bytes of physical memory.
+3223551K bytes of flash memory at bootflash:.
+20971520K bytes of SATA hard disk at harddisk:.
+Configuration register is 0x0
+
+
+>>> cli.clip("show ip interface brief")
+Interface              IP-Address      OK? Method Status                Protocol
+GigabitEthernet0/0/0   10.195.184.196  YES TFTP   up                    up      
+GigabitEthernet0/0/1   unassigned      YES TFTP   administratively down down    
+GigabitEthernet0       10.195.184.195  YES TFTP   up                    up      
+VirtualPortGroup0      30.30.30.1      YES TFTP   up                    up      
+VirtualPortGroup1      40.40.40.1      YES TFTP   up                    up
+
+
+
+
+
+
+>>> cli.clip("show interface GigabitEthernet0")
+GigabitEthernet0 is up, line protocol is up 
+  Hardware is RP management port, address is a0ec.f922.f61f (bia a0ec.f922.f61f)
+  Internet address is 10.195.184.195/24
+  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, 
+     reliability 255/255, txload 1/255, rxload 1/255
+  Encapsulation ARPA, loopback not set
+  Keepalive set (10 sec)
+  Full Duplex, 1000Mbps, link type is auto, media type is RJ45
+  output flow-control is unsupported, input flow-control is unsupported
+  ARP type: ARPA, ARP Timeout 04:00:00
+  Last input 00:00:01, output 00:00:20, output hang never
+  Last clearing of "show interface" counters never
+  Input queue: 0/75/0/0 (size/max/drops/flushes); Total output drops: 0
+  Queueing strategy: fifo
+  Output queue: 0/40 (size/max)
+  5 minute input rate 3000 bits/sec, 5 packets/sec
+  5 minute output rate 0 bits/sec, 0 packets/sec
+     46924585 packets input, 3403622041 bytes, 0 no buffer
+     Received 20149435 broadcasts (0 IP multicasts)
+     0 runts, 0 giants, 0 throttles 
+     1523 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored
+     0 watchdog, 0 multicast, 0 pause input
+     643641 packets output, 129619977 bytes, 0 underruns
+     Output 0 broadcasts (0 IP multicasts)
+     0 output errors, 0 collisions, 0 interface resets
+     5 unknown protocol drops
+     0 babbles, 0 late collision, 0 deferred
+     0 lost carrier, 0 no carrier, 0 pause output
+     0 output buffer failures, 0 output buffers swapped out
+
+
+
+
+>>> cli.clip("show processes cpu sorted")
+CPU utilization for five seconds: 1%/0%; one minute: 1%; five minutes: 1%
+ PID Runtime(ms)     Invoked      uSecs   5Sec   1Min   5Min TTY Process 
+ 141    13411840   592677926         22  0.15%  0.11%  0.12%   0 L2 LISP Punt Pro 
+ 183     1833212    74685898         24  0.07%  0.01%  0.00%   0 MCP RP autovc pr 
+  92     3871203    12277004        315  0.07%  0.03%  0.05%   0 IOSD ipc task    
+  93     1822707    24861372         73  0.07%  0.01%  0.00%   0 IOSD chasfs task 
+ 242     6389271   297646946         21  0.07%  0.05%  0.06%   0 IP ARP Retry Age 
+ 159       57952      957082         60  0.07%  0.00%  0.00%   0 Compute load avg 
+ 199       33386      525588         63  0.07%  0.04%  0.01%   0 Exec             
+ 764     2951985    47813625         61  0.07%  0.03%  0.02%   0 ONEP Network Ele 
+ 365      334594     9568878         34  0.07%  0.00%  0.00%   0 nbar-sdavc-sched 
+   9     7116466     1466602       4852  0.00%  0.07%  0.05%   0 Check heaps      
+  11           0           1          0  0.00%  0.00%  0.00%   0 DiscardQ Backgro 
+  10       29518      159515        185  0.00%  0.00%  0.00%   0 Pool Manager     
+   8           0           1          0  0.00%  0.00%  0.00%   0 RO Notify Timers 
+  14           0           1          0  0.00%  0.00%  0.00%   0 MEMLEAK PROCESS  
+  15     2908880    20477533        142  0.00%  0.02%  0.00%   0 ARP Input
+
+
+
+
+>>> cli.clip("show processes mem sorted")
+Processor Pool Total: 3837179404 Used:  264614640 Free: 3572564764
+reserve P Pool Total:     102404 Used:         88 Free:     102316
+ lsmpi_io Pool Total:    3145304 Used:    3144472 Free:        832
+ PID TTY  Allocated      Freed    Holding    Getbufs    Retbufs Process
+   0   0  381722064  170590888  182911936          0          0 *Init*          
+  92   0  387019960     204320   11240336          0          0 IOSD ipc task   
+   0   0  296176704  280673376   10610784    8384079          0 *Dead*          
+ 328   0    5547720     275416    4930896          0          0 SNMP MA SA      
+ 199   0   55591840   51974504    4795504          0          0 Exec            
+ 209   0    7246616     524968    4705072          0          0 CWAN OIR Handler
+ 597   0    4145088      60368    4126664     849828          0 EEM ED Syslog   
+   1   0    1841344          0    1871288          0          0 Chunk Manager   
+ 631   0    1902256      98104    1834664          0          0 EEM Server      
+  86   0   17000776   15260872    1796920          0          0 SASRcvWQWrk1    
+   0   0          0          0    1248544          0          0 *MallocLite*    
+ 562   0     696632          0     738576          0          0 QOS_MODULE_MAIN 
+   6   0     839352      86088     535768          0          0 RF Slave Main Th
+ 246   0     869856     358536     511320          0          0 mDNS            
+ 480   0     591824     114112     479448          0          0 DHCP Client     
+ 158   0 4472947960 4433523936     448392          0          0 SAMsgThread     
+ 598   0     415320       9488     447776      72316          0 EEM ED Generic
