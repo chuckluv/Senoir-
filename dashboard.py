@@ -33,6 +33,19 @@ def refresh():
     print("CPU Frequency\n"  + str(psutil.cpu_freq()))
     return("nothing")
 
+headings_cpu_percent = ("Percent Utilization")
+data_cpu_percent = (str(psutil.cpu_percent()))
+
+headings_cpu_stats = ("ctx_switches", "interrupts", "soft_interrupts", "syscalls")
+data_cpu_stats = ()
+
+headings_cpu_frequency = ("current", "min", "max")
+data_cpu_frequency = ()
+
+@app.route('/background_cpu_table')
+def refreshCPUtable():
+    return render_template("table.html")
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0") 
