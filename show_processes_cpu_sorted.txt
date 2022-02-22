@@ -1,0 +1,18 @@
+>>> cli.clip("show processes cpu sorted")
+CPU utilization for five seconds: 1%/0%; one minute: 1%; five minutes: 1%
+ PID Runtime(ms)     Invoked      uSecs   5Sec   1Min   5Min TTY Process 
+ 141    13411840   592677926         22  0.15%  0.11%  0.12%   0 L2 LISP Punt Pro 
+ 183     1833212    74685898         24  0.07%  0.01%  0.00%   0 MCP RP autovc pr 
+  92     3871203    12277004        315  0.07%  0.03%  0.05%   0 IOSD ipc task    
+  93     1822707    24861372         73  0.07%  0.01%  0.00%   0 IOSD chasfs task 
+ 242     6389271   297646946         21  0.07%  0.05%  0.06%   0 IP ARP Retry Age 
+ 159       57952      957082         60  0.07%  0.00%  0.00%   0 Compute load avg 
+ 199       33386      525588         63  0.07%  0.04%  0.01%   0 Exec             
+ 764     2951985    47813625         61  0.07%  0.03%  0.02%   0 ONEP Network Ele 
+ 365      334594     9568878         34  0.07%  0.00%  0.00%   0 nbar-sdavc-sched 
+   9     7116466     1466602       4852  0.00%  0.07%  0.05%   0 Check heaps      
+  11           0           1          0  0.00%  0.00%  0.00%   0 DiscardQ Backgro 
+  10       29518      159515        185  0.00%  0.00%  0.00%   0 Pool Manager     
+   8           0           1          0  0.00%  0.00%  0.00%   0 RO Notify Timers 
+  14           0           1          0  0.00%  0.00%  0.00%   0 MEMLEAK PROCESS  
+  15     2908880    20477533        142  0.00%  0.02%  0.00%   0 ARP Input

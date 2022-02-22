@@ -1,0 +1,22 @@
+>>> cli.clip("show processes mem sorted")
+Processor Pool Total: 3837179404 Used:  264614640 Free: 3572564764
+reserve P Pool Total:     102404 Used:         88 Free:     102316
+ lsmpi_io Pool Total:    3145304 Used:    3144472 Free:        832
+ PID TTY  Allocated      Freed    Holding    Getbufs    Retbufs Process
+   0   0  381722064  170590888  182911936          0          0 *Init*          
+  92   0  387019960     204320   11240336          0          0 IOSD ipc task   
+   0   0  296176704  280673376   10610784    8384079          0 *Dead*          
+ 328   0    5547720     275416    4930896          0          0 SNMP MA SA      
+ 199   0   55591840   51974504    4795504          0          0 Exec            
+ 209   0    7246616     524968    4705072          0          0 CWAN OIR Handler
+ 597   0    4145088      60368    4126664     849828          0 EEM ED Syslog   
+   1   0    1841344          0    1871288          0          0 Chunk Manager   
+ 631   0    1902256      98104    1834664          0          0 EEM Server      
+  86   0   17000776   15260872    1796920          0          0 SASRcvWQWrk1    
+   0   0          0          0    1248544          0          0 *MallocLite*    
+ 562   0     696632          0     738576          0          0 QOS_MODULE_MAIN 
+   6   0     839352      86088     535768          0          0 RF Slave Main Th
+ 246   0     869856     358536     511320          0          0 mDNS            
+ 480   0     591824     114112     479448          0          0 DHCP Client     
+ 158   0 4472947960 4433523936     448392          0          0 SAMsgThread     
+ 598   0     415320       9488     447776      72316          0 EEM ED Generic
