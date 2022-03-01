@@ -1,92 +1,32 @@
 [
 {
-  "ctx_switches": "4232897761",
-  "interrupts": "379765567",
+  "ctx_switches": "4092140865",
+  "interrupts": "2508762454",
   "soft_interrupts": "0",
-  "syscalls": "3635354760"
-}]
-{
-  "ctx_switches": "4232897761",
-  "interrupts": "379765567",
-  "soft_interrupts": "0",
-  "syscalls": "3635354760"
+  "syscalls": "2229569984"
 },
-][
 {
-  "ctx_switches": "4233015070",
-  "interrupts": "379841505",
+  "ctx_switches": "4092632726",
+  "interrupts": "2509073053",
   "soft_interrupts": "0",
-  "syscalls": "3635750421"
-}]
-{
-  "ctx_switches": "4233015070",
-  "interrupts": "379841505",
-  "soft_interrupts": "0",
-  "syscalls": "3635750421"
+  "syscalls": "2231024428"
 },
-][
 {
-  "ctx_switches": "4233131190",
-  "interrupts": "379918014",
+  "ctx_switches": "4093045874",
+  "interrupts": "2509329582",
   "soft_interrupts": "0",
-  "syscalls": "3636116229"
-}]
-{
-  "ctx_switches": "4233131190",
-  "interrupts": "379918014",
-  "soft_interrupts": "0",
-  "syscalls": "3636116229"
+  "syscalls": "2232345900"
 },
-][
 {
-  "ctx_switches": "4236478187",
-  "interrupts": "382239494",
+  "ctx_switches": "4093508865",
+  "interrupts": "2509635851",
   "soft_interrupts": "0",
-  "syscalls": "3645418090"
-}]
-{
-  "ctx_switches": "4236478187",
-  "interrupts": "382239494",
-  "soft_interrupts": "0",
-  "syscalls": "3645418090"
+  "syscalls": "2233899180"
 },
-][
 {
-  "ctx_switches": "4236609672",
-  "interrupts": "382327178",
+  "ctx_switches": "4094072814",
+  "interrupts": "2510086174",
   "soft_interrupts": "0",
-  "syscalls": "3645858013"
-}]
-{
-  "ctx_switches": "4236609672",
-  "interrupts": "382327178",
-  "soft_interrupts": "0",
-  "syscalls": "3645858013"
-},
-][
-{
-  "ctx_switches": "4236792297",
-  "interrupts": "382443582",
-  "soft_interrupts": "0",
-  "syscalls": "3646489626"
-}]
-{
-  "ctx_switches": "4236792297",
-  "interrupts": "382443582",
-  "soft_interrupts": "0",
-  "syscalls": "3646489626"
-},
-][
-{
-  "ctx_switches": "4236852795",
-  "interrupts": "382486779",
-  "soft_interrupts": "0",
-  "syscalls": "3646884496"
-}]
-{
-  "ctx_switches": "4236852795",
-  "interrupts": "382486779",
-  "soft_interrupts": "0",
-  "syscalls": "3646884496"
-},
+  "syscalls": "2235993862"
+}
 ]

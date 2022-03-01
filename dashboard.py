@@ -2,7 +2,7 @@ from flask import Flask, render_template, url_for
 import socket
 from subprocess import check_output
 import psutil # before running pip install psutil
-from cpu_statistics import cpu_stats_json
+from cpu_statistics import cpu_stats_json, cpu_percent_json, cpu_freq_json
 
 app = Flask(__name__)
 
@@ -30,9 +30,8 @@ def background_process_ip():
 @app.route('/background_process_timed_cpu')
 def refresh():
     cpu_stats_json()
-    # print("CPU Percent\n" + str(psutil.cpu_percent()))
-    # print("CPU Stats\n" + str(psutil.cpu_stats()))
-    # print("CPU Frequency\n"  + str(psutil.cpu_freq()))
+    cpu_percent_json()
+    cpu_freq_json()
     return("nothing")
 
 

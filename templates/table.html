@@ -50,22 +50,37 @@
 
 
 <script>
+/*
 	var cpuPercentArray = [
 	    {'cpu_percent':'3.2'},
 	    {'cpu_percent':'4.5'},
         {'cpu_percent': '...'}
 
 	]
+*/
 
-    var cpuStatArray = [
+/*  var cpuStatArray = [
         {'ctx_switches':'239828975', 'interrupts':'1443174502', 'soft_interrupts':'0', 'syscalls':'238604547'},
         {'ctx_switches':'...', 'interrupts':'...', 'soft_interrupts':'...', 'syscalls':'...'},        
     ]
+*/
 
-    var cpuFrequencyArray = [
+/*    var cpuFrequencyArray = [
         {'current':'3593.0', 'min':'0.0', 'max':'3593.0'},
         {'current':'...', 'min':'...', 'max':'...'}
     ]
+*/
+    cpuStatFile = open("data.json", "r") 
+    statJson = cpuStatFile.read()
+    var cpuStatArray = json.loads(statJson)
+
+    cpuPercentFile = open("cpu_percent_data.json", "r")
+    percentJson = cpuPercentFile.read()
+    var cpuPercentArray = json.loads(percentJson)
+
+    cpuFrequencyFile = open("cpu_frequency.json", "r")
+    frequencyJson = cpuFrequencyFile.read()
+    var cpuFrequencyArray = json.loads(frequencyJson)
 	
 	buildCpuPercentTable(cpuPercentArray)
     buildCpuStatsTable(cpuStatArray)
