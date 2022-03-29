@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script type=text/javascript>
     $(function() {
         $('a#test').on('click', function(e) {
@@ -20,12 +20,12 @@
             return false;
         });
     });
-    // new down
-    $(document).ready(function(){
-        $("button").click(function(){
-            $("#box").load(r"\templates\ip_interface.html");
-        });
-    });
+    // new down uncommenting this will break "Get Host Name" and "Get IP Address" buttons
+    // $(document).ready(function(){
+    //     $("button").click(function(){
+    //         $("#box").load(r"\templates\ip_interface.html");
+    //     });
+    // });
     // new up
 
     // this block works after page loads, no action needed

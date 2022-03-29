@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width", initial-scale="1.0" />
+        <title>Interface Table</title>
+        <link rel="stylesheet" href="/static/interface_table_styles.css" />
+        <script type='text/javascript'>
+            function clickyClick() {
+                url = '/interface/' + document.getElementById("selection").value
+                window.open(url, '_blank');
+            }
+        </script>
+    </head>
+    <body>
+        <table class="table">
+            <tr class="table__header">
+                {% for header in headings %}
+                <th class="table__cell">{{ header }}</th>
+                {% endfor %}
+            </tr>
+            {% for row in data %}
+            <tr class="table__row">
+                {% for cell in row %}
+                    <td class="table__cell"> {{ cell }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+        <br>
+        <form>Input Interface ID:
+            <input type="text" name="selection" id="selection">
+          </form>
+          <br>
+          <button onclick="clickyClick()">View Interface</button>
+    </body>
+</html>

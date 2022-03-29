@@ -1,13 +1,12 @@
 from flask import Flask, render_template, url_for
 import socket
 from subprocess import check_output
-import psutil # before running pip install psutil
-import fileinput
 import re
-import os
+import numpy as np
+import time
 from datetime import datetime
 from random import seed, randint
-from cpu_statistics import cpu_stats_json, cpu_percent_json, cpu_freq_json
+from cpu_statistics import cpu_stats_json, cpu_percent_json, cpu_freq_json, show_processes_cpu_sorted
 
 app = Flask(__name__)
 
@@ -38,6 +37,7 @@ def refresh():
     cpu_stats_json()
     cpu_percent_json()
     cpu_freq_json()
+    show_processes_cpu_sorted()
     return("nothing")
 
 
@@ -47,10 +47,9 @@ def refreshCPUtable():
 
 
 
-@app.route('/ip')
-def test():
-    return render_template("ip_interface.html")
-
+@app.route('/interface')
+# def test():
+#     return render_template("ip_interface.html")
 
 def show_ip():
     # Prints interfaces to console
@@ -58,36 +57,62 @@ def show_ip():
 
     with open(r'templates\show_ip_interface_brief.txt') as fh:
         fstring = fh.readlines() # array of lines
-
-    with open('templates\ip_interface.html', 'w') as file:
-        file.write("<p>")
-        file.write(fstring[1])
-        file.close()
-
-    for line in fstring:
-        pattern = re.findall( r'\b(GigabitEthernet0/0/0|GigabitEthernet0/0/1|GigabitEthernet0|VirtualPortGroup0|VirtualPortGroup1)\b', line ) # array
-        ips = re.findall( r'[0-9]+(?:\.[0-9]+){3}', line ) # array
-        if pattern:
-            fd=open("templates\ip_interface.html","a")
-            fd.write(line)
-            fd.write("<br>")
-            fd.close()
-            if ips:
-                for i in ips:
+        line_1 = str(fstring[1])
+        headings = line_1.split()
+        headings = np.array(headings)
+        headings = np.append(headings, "ID")
+        headings =  tuple(headings) # turns array into tuple
+        data = []
+        for line in fstring:
+            pattern = re.findall( r'\b(GigabitEthernet0/0/0|GigabitEthernet0/0/1|GigabitEthernet0|VirtualPortGroup0|VirtualPortGroup1)\b', line ) # array
+            if pattern:
+                temp = line.split()
+                for i in pattern:
+                    time.sleep(1)
                     seed(datetime.now())
                     r_int = randint(0, 100000)
-                    with open(r'templates\ip_interface.html') as file:
-                        filedata = file.read() # array of lines
-                        url = "<a href=\"ip/" + str(r_int) + "\">"+ str(ips[0]) +"</a>"
-                        filedata = filedata.replace(str(ips[0]),url) # replace ip address with hyperlink
-                    with open('templates\ip_interface.html', 'w') as file:
-                        file.write(filedata)
-    with open('templates\ip_interface.html', 'a') as file:
-        file.write("</p>")
-        file.close()
-    fh.close()  # close demo.txt
+                    # url = "<a href=\"/" + str(r_int) + "\">"+ str(pattern[0]) +"</a>"
+                    # temp[0] = i.replace(str(pattern[0]),url) # replace interface with hyperlink
+                    temp.append(str(r_int))
+                    data.append(temp)
+        data = np.array(data, dtype=list)   
+        data =  tuple([tuple(e) for e in data])
+        print(headings)
+        print(data)
+        fh.close()
+    return render_template("interface_table.html", headings=headings, data=data) #, url=url
 
-@app.route('/ip/<rand_num_str>') # dynamic app route for ip interfaces
+
+
+    # with open('templates\ip_interface.html', 'w') as file:
+    #     file.write("<p>")
+    #     file.write(fstring[1])
+    #     file.close()
+
+    # for line in fstring:
+        # pattern = re.findall( r'\b(GigabitEthernet0/0/0|GigabitEthernet0/0/1|GigabitEthernet0|VirtualPortGroup0|VirtualPortGroup1)\b', line ) # array
+        # ips = re.findall( r'[0-9]+(?:\.[0-9]+){3}', line ) # array
+        # if pattern:
+    #         fd=open("templates\ip_interface.html","a")
+    #         fd.write(line)
+    #         fd.write("<br>")
+    #         fd.close()
+            # if pattern:
+            #     for i in pattern:
+            #         seed(datetime.now())
+            #         r_int = randint(0, 100000)
+            #         with open(r'templates\ip_interface.html') as file:
+            #             filedata = file.read() # array of lines
+            #             url = "<a href=\"interface/" + str(r_int) + "\">"+ str(pattern[0]) +"</a>"
+            #             filedata = filedata.replace(str(pattern[0]),url) # replace interface with hyperlink
+            #         with open('templates\ip_interface.html', 'w') as file:
+            #             file.write(filedata)
+    # with open('templates\ip_interface.html', 'a') as file:
+    #     file.write("</p>") 
+    #     file.close()
+    # fh.close()  # close demo.txt
+
+@app.route('/interface/<rand_num_str>') # dynamic app route for ip interfaces
 def view(rand_num_str):
     if type(rand_num_str) == str:
         return "Viewing Interface"

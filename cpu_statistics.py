@@ -126,9 +126,7 @@ def cpu_stats_json():
         jsonFile = open("data.json", "a")
         jsonFile.write(",\n" + jsonString + "\n]")
         jsonFile.close()
- 
 
-# print("CPU Frequency\n"  + str(psutil.cpu_freq()))
 
 
 
@@ -199,3 +197,17 @@ def cpu_freq_json():
         jsonFile = open("cpu_frequency.json", "a")
         jsonFile.write(",\n" + jsonString + "\n]")
         jsonFile.close()
+
+def show_processes_cpu_sorted():
+     with open(r'templates\show_processes_cpu_sorted.txt') as fh:
+        fstring = fh.readlines()
+        data = fstring[1].split(";")
+        print(data)
+        # for line in fstring:
+        #     pattern = re.findall( r'\b(GigabitEthernet0/0/0|GigabitEthernet0/0/1|GigabitEthernet0|VirtualPortGroup0|VirtualPortGroup1)\b', line ) # array
+        #     ips = re.findall( r'[0-9]+(?:\.[0-9]+){3}', line ) # array
+        #     if pattern:
+        #         fd=open("templates\ip_interface.html","a")
+        #         fd.write(line)
+        #         fd.write("<br>")
+        #         fd.close()
