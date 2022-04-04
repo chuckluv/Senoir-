@@ -1,6 +1,6 @@
 Installation and Starting Steps
 1. Create the virtual environment
-2. run pip3 install requirements.txt
+2. run pip3 install -r requirements.txt
 3. run python3 dashboard.py
 
 App routes
