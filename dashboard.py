@@ -79,45 +79,27 @@ def show_ip():
         data =  tuple([tuple(e) for e in data])
         print(headings)
         print(data)
-        fh.close()
     return render_template("interface_table.html", headings=headings, data=data) #, url=url
-
-
-
-    # with open('templates\ip_interface.html', 'w') as file:
-    #     file.write("<p>")
-    #     file.write(fstring[1])
-    #     file.close()
-
-    # for line in fstring:
-        # pattern = re.findall( r'\b(GigabitEthernet0/0/0|GigabitEthernet0/0/1|GigabitEthernet0|VirtualPortGroup0|VirtualPortGroup1)\b', line ) # array
-        # ips = re.findall( r'[0-9]+(?:\.[0-9]+){3}', line ) # array
-        # if pattern:
-    #         fd=open("templates\ip_interface.html","a")
-    #         fd.write(line)
-    #         fd.write("<br>")
-    #         fd.close()
-            # if pattern:
-            #     for i in pattern:
-            #         seed(datetime.now())
-            #         r_int = randint(0, 100000)
-            #         with open(r'templates\ip_interface.html') as file:
-            #             filedata = file.read() # array of lines
-            #             url = "<a href=\"interface/" + str(r_int) + "\">"+ str(pattern[0]) +"</a>"
-            #             filedata = filedata.replace(str(pattern[0]),url) # replace interface with hyperlink
-            #         with open('templates\ip_interface.html', 'w') as file:
-            #             file.write(filedata)
-    # with open('templates\ip_interface.html', 'a') as file:
-    #     file.write("</p>") 
-    #     file.close()
-    # fh.close()  # close demo.txt
 
 @app.route('/interface/<rand_num_str>') # dynamic app route for ip interfaces
 def view(rand_num_str):
-    if type(rand_num_str) == str:
-        return "Viewing Interface"
-    else:
-        return "404 Not Found"
+    with open(r'templates\show_interface_gigabitethernet0.txt') as file:
+        fstring = file.read()
+
+        pattern = r"(?<=address is )(.+?)(?=, DLY 10 usec,)"
+        found = re.findall(pattern, fstring, re.DOTALL)
+        joined_string = ' '.join(str(e) for e in found)
+        print(joined_string)
+
+        pattern2 = r"(?<=5 minute)(.+?)(?=0 underruns)"
+        found2 = re.findall(pattern2, fstring, re.DOTALL)
+        joined_string2 = ' '.join(str(e) for e in found2)
+        app_string = "5 minute" + joined_string2 + " 0 underruns"
+        print(app_string)
+        list2  = tuple(map(str, app_string.split(', ')))
+        # print(list2)
+        
+    return render_template("view_interface.html", p1=joined_string, p2=app_string, list2=list2)
 
 
 if __name__ == "__main__":

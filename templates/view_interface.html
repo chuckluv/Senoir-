@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width", initial-scale="1.0" />
+    </head>
+    <body>
+        <h1>Viewing Interface</h1>
+        <p> {{ p1 }} </p>
+        <p>{{ p2 }} </p>
+        <br>
+        <table class="table">
+            <tr class="table__header">
+                <th class="table__cell">Header</th>
+            </tr>
+            {% for cell in list2 %}
+            <tr class="table__row">
+                <td class="table__cell"> {{ cell }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>
