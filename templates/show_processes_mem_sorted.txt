@@ -1,0 +1,5 @@
+>>> cli.clip("show processes mem sorted")
+Processor Pool Total: 3837179404 Used:  264614640 Free: 3572564764
+reserve P Pool Total:     102404 Used:         88 Free:     102316
+ lsmpi_io Pool Total:    3145304 Used:    3144472 Free:        832
+ 
