@@ -81,6 +81,39 @@ def show_ip():
         print(data)
     return render_template("interface_table.html", headings=headings, data=data) #, url=url
 
+
+@app.route('/processes')
+def show_proc_mem_sorted():
+    with open(r'templates/show_processes_mem_sorted.txt') as msf:
+        mstring = msf.readlines()#array of lines
+        memline_1 = str(mstring[1])
+        mem_headings = memline_1.split()
+        mem_headings = np.array(mem_headings)
+        mem_headings = np.append(mem_headings, "ID")
+        mem_headings = tuple(mem_headings)#makes tuple
+        data = []
+        for mline in mstring:
+            pattern = re.findall(r'\b(Processor Pool Total|reserve P Pool Total|lsmpi_io Pool Total)\b', mline)
+            if pattern:
+                temp = mline.split()
+                for i in pattern:
+                    time.sleep(1)
+                    seed(datetime.now)
+                    r_int = randint(0, 100000)
+                    temp.append(str(r_int))
+                    data.append(temp)
+        data = np.array(data, dtype=list)
+        data = tuple([tuple(e) for e in data])
+        print(mem_headings)
+        print(data)
+        msf.close()
+
+        return render_template("processes_mem.html", mem_headings=mem_headings, data=data)
+
+
+
+
+
 @app.route('/interface/<rand_num_str>') # dynamic app route for ip interfaces
 def view(rand_num_str):
     with open(r'templates\show_interface_gigabitethernet0.txt') as file:
