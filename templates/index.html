@@ -2,25 +2,6 @@
 <html lang="en">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script type=text/javascript>
-    $(function() {
-        $('a#test').on('click', function(e) {
-            $.getJSON('background_process_test',  // app route and function name in dashboard.py
-            function(data) {
-                // do nothing
-            });
-            return false;
-        });
-    });
-    $(function() {
-        $('a#test1').on('click', function(e) { // a#test1 corresponds to id=test1 in <a href=# id=test1><button... 
-            $.getJSON('background_process_ip', // app route and function name in dashboard.py
-            function(data) {
-                // do nothing
-            });
-            return false;
-        });
-    });
-  
     function cpuRefresh(){
         $.getJSON('background_process_timed_cpu',function () { // background_process_timed_cpu' corresponds to app route
             $(this).unwrap();
@@ -39,26 +20,19 @@
     <title>Guest Shell Dashboard</title>
 </head>
 <body>
+    <img src="1200px-Cisco_logo_blue_2016.png" alt="Cisco Logo">
    <h1>Welcome to Cisco's Guest Shell Dashboard </h1>
     <div class='container'>
-        <h3>Send host name to console.</h3>
-            <form>
-                <a href=# id=test><button class='btn btn-default'>Get Host Name</button></a>
-            </form>
-        <h3>Send IP address to console.</h3>
-            <form>
-                <a href=# id=test1><button class='btn btn-default'>Get IP Address</button></a>
-            </form>
-        <h3>Send CPU usage is sent to the console every 5 seconds.</h3>
+        <h3>Host Name {{ hostname }} </h3>
+        <h3>Local IP Address {{ ip }} </h3>
+        <h3>CPU usage is sent to the console every 5 seconds.</h3>
     </div>
-    <div id="test"><p>This text should change</p></div>
+    
+    <a href="/interface" class="button">Show IP Inteface Brief</a>
 
-    <button id="btn">Show IP Inteface Brief</button>
+    <form action="/interface">
+        <input type="submit" value="Show IP Inteface Brief" />
+    </form>
 
-    <!-- new below -->
-    <div id="box">
-        <h3>Click button to load new content inside DIV box</h3>
-    </div>
-    <button type="button">Load Content</button>
 </body>
 </html>

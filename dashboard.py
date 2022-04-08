@@ -19,19 +19,12 @@ def api_root():
 @app.route("/home")
 def home():
     show_ip()
-    return render_template("index.html")
-
-@app.route('/background_process_test')
-def background_process_test():
-    print(socket.gethostname())
-    return ("nothing")
-
-@app.route('/background_process_ip')
-def background_process_ip():
+    hostname = socket.gethostname()
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     s.connect(("8.8.8.8", 80))
-    print(s.getsockname()[0]) # gets IP
-    return ("nothing")
+    ip = s.getsockname()[0]
+    return render_template("index.html", hostname=hostname, ip=ip)
+
 
 
 @app.route('/background_process_timed_cpu')

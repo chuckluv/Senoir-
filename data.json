@@ -1,50 +1,50 @@
 [
 {
-  "ctx_switches": "1662051769",
-  "interrupts": "1770670835",
+  "ctx_switches": "3083809758",
+  "interrupts": "2879850285",
   "soft_interrupts": "0",
-  "syscalls": "250920489"
+  "syscalls": "55771026"
 },
 {
-  "ctx_switches": "1662488358",
-  "interrupts": "1771021586",
+  "ctx_switches": "3083949025",
+  "interrupts": "2879941445",
   "soft_interrupts": "0",
-  "syscalls": "252362180"
+  "syscalls": "56320089"
 },
 {
-  "ctx_switches": "1663075980",
-  "interrupts": "1771435962",
+  "ctx_switches": "3084110225",
+  "interrupts": "2880073883",
   "soft_interrupts": "0",
-  "syscalls": "254280216"
+  "syscalls": "56977639"
 },
 {
-  "ctx_switches": "1663658707",
-  "interrupts": "1771844652",
+  "ctx_switches": "3084276296",
+  "interrupts": "2880181224",
   "soft_interrupts": "0",
-  "syscalls": "255997483"
+  "syscalls": "57909618"
 },
 {
-  "ctx_switches": "1664161595",
-  "interrupts": "1772263956",
+  "ctx_switches": "3084466973",
+  "interrupts": "2880311405",
   "soft_interrupts": "0",
-  "syscalls": "257650450"
+  "syscalls": "58999368"
 },
 {
-  "ctx_switches": "2281943006",
-  "interrupts": "2787217100",
+  "ctx_switches": "3084693366",
+  "interrupts": "2880516943",
   "soft_interrupts": "0",
-  "syscalls": "917029414"
+  "syscalls": "60001793"
 },
 {
-  "ctx_switches": "2282175107",
-  "interrupts": "2787367249",
+  "ctx_switches": "3084866373",
+  "interrupts": "2880630209",
   "soft_interrupts": "0",
-  "syscalls": "917817341"
+  "syscalls": "60868430"
 },
 {
-  "ctx_switches": "2282351357",
-  "interrupts": "2787474807",
+  "ctx_switches": "3085097325",
+  "interrupts": "2880788277",
   "soft_interrupts": "0",
-  "syscalls": "918358667"
+  "syscalls": "61852415"
 }
 ]
