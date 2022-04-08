@@ -72,7 +72,7 @@ def show_ip():
                     temp.append(str(count))
                     data.append(temp)
                     count = count +1
-        data = np.array(data, dtype=list)   
+        data = np.array(data, dtype=list)
         data =  tuple([tuple(e) for e in data])
         # print(headings)
         # print(data)
@@ -99,7 +99,7 @@ def show_proc_mem_sorted():
                     r_int = randint(0, 100000)
                     temp.append(str(r_int))
                     data.append(temp)
-                    
+
         data = np.array(data, dtype=list)
         data = tuple([tuple(e) for e in data])
         # print(mem_headings)
@@ -108,8 +108,26 @@ def show_proc_mem_sorted():
 
         return render_template("processes_mem.html", mem_headings=mem_headings, data=data)
 
+@app.route('/version')
+def show_version():
+    with open(r'templates/show_version.txt') as ver:
+        vstring = ver.readlines()#array of lines
+        data = []
+        for vline in vstring:
+            pattern = re.findall(r'\b(Router uptime|System image file|cisco ISR4321/K9)\b', vline)
+            if pattern:
+                temp = vline.split()
+                for i in pattern:
+                    time.sleep(1)
+                    seed(datetime.now)
+                    r_int = randint(0, 100000)
+                    temp.append(str(r_int))
+                    data.append(temp)
 
-
+        data = np.array(data, dtype=list)
+        data = tuple([tuple(e) for e in data])
+        ver.close()
+    return render_template("show_version.html", data=data)
 
 
 @app.route('/interface/<rand_num_str>') # dynamic app route for ip interfaces
@@ -132,7 +150,7 @@ def view(rand_num_str):
         selection = files[4]
     else:
         return "Interface Not Found"
-    
+
     with open(selection) as file:
         fstring = file.read()
 
@@ -151,6 +169,6 @@ def view(rand_num_str):
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0") 
-    # accessible by any computer 
+    app.run(host="0.0.0.0")
+    # accessible by any computer
     # on the network
