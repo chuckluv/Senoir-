@@ -1,3 +1,5 @@
+from asyncio.windows_events import NULL
+from dataclasses import replace
 from flask import Flask, render_template, url_for
 import socket
 from subprocess import check_output
@@ -63,22 +65,24 @@ def show_ip():
         headings = np.append(headings, "ID")
         headings =  tuple(headings) # turns array into tuple
         data = []
+        count = 0
         for line in fstring:
             pattern = re.findall( r'\b(GigabitEthernet0/0/0|GigabitEthernet0/0/1|GigabitEthernet0|VirtualPortGroup0|VirtualPortGroup1)\b', line ) # array
             if pattern:
                 temp = line.split()
                 for i in pattern:
-                    time.sleep(1)
-                    seed(datetime.now())
-                    r_int = randint(0, 100000)
+                    # time.sleep(1)
+                    # seed(datetime.now())
+                    # r_int = randint(0, 100000)
                     # url = "<a href=\"/" + str(r_int) + "\">"+ str(pattern[0]) +"</a>"
                     # temp[0] = i.replace(str(pattern[0]),url) # replace interface with hyperlink
-                    temp.append(str(r_int))
+                    temp.append(str(count))
                     data.append(temp)
+                    count = count +1
         data = np.array(data, dtype=list)   
         data =  tuple([tuple(e) for e in data])
-        print(headings)
-        print(data)
+        # print(headings)
+        # print(data)
     return render_template("interface_table.html", headings=headings, data=data) #, url=url
 
 
@@ -102,10 +106,11 @@ def show_proc_mem_sorted():
                     r_int = randint(0, 100000)
                     temp.append(str(r_int))
                     data.append(temp)
+                    
         data = np.array(data, dtype=list)
         data = tuple([tuple(e) for e in data])
-        print(mem_headings)
-        print(data)
+        # print(mem_headings)
+        # print(data)
         msf.close()
 
         return render_template("processes_mem.html", mem_headings=mem_headings, data=data)
@@ -116,22 +121,39 @@ def show_proc_mem_sorted():
 
 @app.route('/interface/<rand_num_str>') # dynamic app route for ip interfaces
 def view(rand_num_str):
-    with open(r'templates\show_interface_gigabitethernet0.txt') as file:
+    selection = NULL
+    files = ["templates\show_interface_gigabitethernet000.txt",
+    "templates\show_interface_gigabitethernet001.txt",
+    "templates\show_interface_virtualportgroup0.txt",
+    "templates\show_interface_virtualportgroup0.txt",
+    "templates\show_interface_virtualportgroup1.txt"]
+    if rand_num_str == "0":
+        selection = files[0]
+    elif rand_num_str == "1":
+        selection = files[1]
+    elif rand_num_str == "2":
+        selection = files[2]
+    elif rand_num_str == "3":
+        selection = files[3]
+    elif selection == "4":
+        selection = files[4]
+    else:
+        return "Interface Not Found"
+    
+    with open(selection) as file:
         fstring = file.read()
 
-        pattern = r"(?<=address is )(.+?)(?=, DLY 10 usec,)"
+        pattern = r"(?<=Hardware is )(.+?)(?=, DLY 10 usec,)"
         found = re.findall(pattern, fstring, re.DOTALL)
         joined_string = ' '.join(str(e) for e in found)
-        print(joined_string)
+        # print(joined_string)
 
         pattern2 = r"(?<=5 minute)(.+?)(?=0 underruns)"
         found2 = re.findall(pattern2, fstring, re.DOTALL)
         joined_string2 = ' '.join(str(e) for e in found2)
         app_string = "5 minute" + joined_string2 + " 0 underruns"
-        print(app_string)
-        list2  = tuple(map(str, app_string.split(', ')))
-        # print(list2)
-        
+        replaced_string = app_string.replace("\n", ", ")
+        list2  = tuple(map(str, replaced_string.split(', ')))
     return render_template("view_interface.html", p1=joined_string, p2=app_string, list2=list2)
 
 

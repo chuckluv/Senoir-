@@ -20,17 +20,7 @@
             return false;
         });
     });
-    // new down uncommenting this will break "Get Host Name" and "Get IP Address" buttons
-    // $(document).ready(function(){
-    //     $("button").click(function(){
-    //         $("#box").load(r"\templates\ip_interface.html");
-    //     });
-    // });
-    // new up
-
-    // this block works after page loads, no action needed
-    // see https://www.w3schools.com/xml/ajax_intro.asp
-    // and https://stackoverflow.com/questions/25446628/ajax-jquery-refresh-div-every-5-seconds
+  
     function cpuRefresh(){
         $.getJSON('background_process_timed_cpu',function () { // background_process_timed_cpu' corresponds to app route
             $(this).unwrap();
@@ -44,15 +34,6 @@
     // end block
 </script>
 
-
-<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<script>
-    $(document).ready(function(){
-        $("#btn").click(function(){
-            $("#test").load("demo.html");
-        });
-    });
-</script> -->
 <head>
     <meta charset="UTF-8">
     <title>Guest Shell Dashboard</title>
