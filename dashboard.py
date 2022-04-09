@@ -1,14 +1,17 @@
-from asyncio.windows_events import NULL
+# from asyncio.unix_events import NULL
 from dataclasses import replace
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, make_response
 import socket
 from subprocess import check_output
 import re
 import numpy as np
 import time
+import json
+import os
 from datetime import datetime
 from random import seed, randint
 from cpu_statistics import cpu_stats_json, cpu_percent_json, cpu_freq_json, show_processes_cpu_sorted
+
 
 app = Flask(__name__)
 
@@ -48,9 +51,9 @@ def refreshCPUtable():
 
 def show_ip():
     # Prints interfaces to console
-    path = r"\templates\ip_interface.html"
+    path = r"/templates/ip_interface.html"
 
-    with open(r'templates\show_ip_interface_brief.txt') as fh:
+    with open(r'templates/show_ip_interface_brief.txt') as fh:
         fstring = fh.readlines() # array of lines
         line_1 = str(fstring[1])
         headings = line_1.split()
@@ -78,6 +81,17 @@ def show_ip():
         # print(data)
     return render_template("interface_table.html", headings=headings, data=data) #, url=url
 
+@app.route('/graph_data', methods=["GET", "POST"])
+def data2():
+    while os.stat("cpu_percent_data.json").st_size == 0:
+        pass
+    with open('cpu_percent_data.json') as f: 
+        percentage = json.load(f)
+    current = percentage[-1]['cpu_percent']
+    data2 = [time.time() * 1000, float(current)]
+    response = make_response(json.dumps(data2))
+    response.content_type = 'application/json'
+    return response
 
 @app.route('/processes')
 def show_proc_mem_sorted():
@@ -116,14 +130,14 @@ def show_version():
         for vline in vstring:
             pattern = re.findall(r'\b(Router uptime|System image file|cisco ISR4321/K9)\b', vline)
             if pattern:
-                temp = vline.split()
+                if vline.find("with") == -1:
+                    temp =vline.split(" is",1)
+                else:
+                    temp = vline.split("with",1)
                 for i in pattern:
                     time.sleep(1)
                     seed(datetime.now)
-                    r_int = randint(0, 100000)
-                    temp.append(str(r_int))
                     data.append(temp)
-
         data = np.array(data, dtype=list)
         data = tuple([tuple(e) for e in data])
         ver.close()
@@ -132,7 +146,7 @@ def show_version():
 
 @app.route('/interface/<rand_num_str>') # dynamic app route for ip interfaces
 def view(rand_num_str):
-    selection = NULL
+    selection = None
     files = ["templates\show_interface_gigabitethernet000.txt",
     "templates\show_interface_gigabitethernet001.txt",
     "templates\show_interface_virtualportgroup0.txt",
