@@ -199,7 +199,7 @@ def cpu_freq_json():
         jsonFile.close()
 
 def show_processes_cpu_sorted():
-     with open(r'templates\show_processes_cpu_sorted.txt') as fh:
+     with open(r'templates/show_processes_cpu_sorted.txt') as fh:
         fstring = fh.readlines()
         data = fstring[1].split(";")
         print(data)
