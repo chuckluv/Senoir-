@@ -1,0 +1,4 @@
+>>> cli.clip("show version")
+Router uptime is 15 weeks, 5 days, 18 hours, 18 minutes
+System image file is "bootflash:isr4300-universalk9.BLD_V176_THROTTLE_LATEST_20210629_014221.SSA.bin"
+cisco ISR4321/K9 (1RU) processor with 3747245K/3071K bytes of memory.
