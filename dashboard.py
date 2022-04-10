@@ -1,6 +1,6 @@
 # from asyncio.unix_events import NULL
 from dataclasses import replace
-from flask import Flask, render_template, url_for, make_response
+from flask import Flask, render_template, make_response
 import socket
 from subprocess import check_output
 import re
@@ -26,7 +26,11 @@ def home():
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     s.connect(("8.8.8.8", 80))
     ip = s.getsockname()[0]
-    return render_template("index.html", hostname=hostname, ip=ip)
+    cpu_stats_json()
+    cpu_percent_json()
+    cpu_freq_json()
+    output = show_processes_cpu_sorted()
+    return render_template("index.html", hostname=hostname, ip=ip, output=output)
 
 
 
@@ -35,8 +39,8 @@ def refresh():
     cpu_stats_json()
     cpu_percent_json()
     cpu_freq_json()
-    show_processes_cpu_sorted()
-    return("nothing")
+    output = show_processes_cpu_sorted()
+    return render_template("index.html", output=output)
 
 
 @app.route('/background_cpu_table')

@@ -202,12 +202,10 @@ def show_processes_cpu_sorted():
      with open(r'templates/show_processes_cpu_sorted.txt') as fh:
         fstring = fh.readlines()
         data = fstring[1].split(";")
-        print(data)
-        # for line in fstring:
-        #     pattern = re.findall( r'\b(GigabitEthernet0/0/0|GigabitEthernet0/0/1|GigabitEthernet0|VirtualPortGroup0|VirtualPortGroup1)\b', line ) # array
-        #     ips = re.findall( r'[0-9]+(?:\.[0-9]+){3}', line ) # array
-        #     if pattern:
-        #         fd=open("templates\ip_interface.html","a")
-        #         fd.write(line)
-        #         fd.write("<br>")
-        #         fd.close()
+        data = tuple(data)
+        output = ' '.join(str(e) for e in data)
+        print(output)
+        fh.close()
+        return output
+        
+        

@@ -3,7 +3,7 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script type=text/javascript>
     function cpuRefresh(){
-        $.getJSON('background_process_timed_cpu',function () { // background_process_timed_cpu' corresponds to app route
+        $.getJSON('home',function () { // background_process_timed_cpu' corresponds to app route
             $(this).unwrap();
         });
     }
@@ -15,12 +15,6 @@
     // end block
 </script>
 
-</script> 
-
-
-
-
-
 <script src="http://code.highcharts.com/highcharts.js"></script>
 <script src="http://code.highcharts.com/highcharts-more.js"></script>
 <script src="http://code.highcharts.com/modules/exporting.js"></script>
@@ -28,14 +22,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Guest Shell Dashboard</title>
+    <link rel="stylesheet" href="static\main.css">
 </head>
 <body>
-    <img src="1200px-Cisco_logo_blue_2016.png" alt="Cisco Logo">
+    <div class="logo">
+        <img src="static\1200px-Cisco_logo_blue_2016.png" alt="Cisco Logo">
+    </div>
    <h1>Welcome to Cisco's Guest Shell Dashboard </h1>
     <div class='container'>
         <h3>Host Name {{ hostname }} </h3>
         <h3>Local IP Address {{ ip }} </h3>
-        <h3>CPU usage is sent to the console every 5 seconds.</h3>
+        <h3> {{ output }} </h3>
     </div>
     
     <a href="/interface" class="button">Show IP Inteface Brief</a>
