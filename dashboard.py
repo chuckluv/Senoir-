@@ -1,6 +1,6 @@
 # from asyncio.unix_events import NULL
 from dataclasses import replace
-from flask import Flask, render_template, url_for, make_response
+from flask import Flask, render_template, make_response
 import socket
 from subprocess import check_output
 import re
@@ -26,7 +26,11 @@ def home():
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     s.connect(("8.8.8.8", 80))
     ip = s.getsockname()[0]
-    return render_template("index.html", hostname=hostname, ip=ip)
+    cpu_stats_json()
+    cpu_percent_json()
+    cpu_freq_json()
+    output = show_processes_cpu_sorted()
+    return render_template("index.html", hostname=hostname, ip=ip, output=output)
 
 
 
@@ -35,8 +39,8 @@ def refresh():
     cpu_stats_json()
     cpu_percent_json()
     cpu_freq_json()
-    show_processes_cpu_sorted()
-    return("nothing")
+    output = show_processes_cpu_sorted()
+    return render_template("index.html", output=output)
 
 
 @app.route('/background_cpu_table')
@@ -130,14 +134,14 @@ def show_version():
         for vline in vstring:
             pattern = re.findall(r'\b(Router uptime|System image file|cisco ISR4321/K9)\b', vline)
             if pattern:
-                temp = vline.split()
+                if vline.find("with") == -1:
+                    temp =vline.split(" is",1)
+                else:
+                    temp = vline.split("with",1)
                 for i in pattern:
                     time.sleep(1)
                     seed(datetime.now)
-                    r_int = randint(0, 100000)
-                    temp.append(str(r_int))
                     data.append(temp)
-
         data = np.array(data, dtype=list)
         data = tuple([tuple(e) for e in data])
         ver.close()
@@ -186,3 +190,4 @@ if __name__ == "__main__":
     app.run(host="0.0.0.0")
     # accessible by any computer
     # on the network
+
