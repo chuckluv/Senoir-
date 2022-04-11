@@ -1,4 +1,5 @@
 # from asyncio.unix_events import NULL
+from asyncio.constants import SENDFILE_FALLBACK_READBUFFER_SIZE
 from dataclasses import replace
 from flask import Flask, render_template, make_response
 import socket
@@ -34,15 +35,6 @@ def home():
 
 
 
-@app.route('/background_process_timed_cpu')
-def refresh():
-    cpu_stats_json()
-    cpu_percent_json()
-    cpu_freq_json()
-    output = show_processes_cpu_sorted()
-    return render_template("index.html", output=output)
-
-
 @app.route('/background_cpu_table')
 def refreshCPUtable():
     return render_template("table.html")
@@ -71,14 +63,18 @@ def show_ip():
             if pattern:
                 temp = line.split()
                 for i in pattern:
-                    # time.sleep(1)
-                    # seed(datetime.now())
-                    # r_int = randint(0, 100000)
-                    # url = "<a href=\"/" + str(r_int) + "\">"+ str(pattern[0]) +"</a>"
-                    # temp[0] = i.replace(str(pattern[0]),url) # replace interface with hyperlink
                     temp.append(str(count))
                     data.append(temp)
                     count = count +1
+
+        position = 0
+        for i in data:
+            if len(data[position]) > 7:
+                if (data[position][4] == 'administratively' and data[position][5] == 'down'):
+                    data[position][4] = 'administratively down'
+                    del data[position][5]
+            position = position +1 
+
         data = np.array(data, dtype=list)
         data =  tuple([tuple(e) for e in data])
         # print(headings)
@@ -101,21 +97,42 @@ def data2():
 def show_proc_mem_sorted():
     with open(r'templates/show_processes_mem_sorted.txt') as msf:
         mstring = msf.readlines()#array of lines
-        memline_1 = str(mstring[1])
-        mem_headings = memline_1.split()
-        mem_headings = np.array(mem_headings)
-        mem_headings = np.append(mem_headings, "ID")
-        mem_headings = tuple(mem_headings)#makes tuple
+        # memline_1 = str(mstring[1])
+        # mem_headings = memline_1.split()
+        # mem_headings = np.array(mem_headings)
+        # mem_headings = np.append(mem_headings, "ID")
+        # mem_headings = tuple(mem_headings)#makes tuple
+        mem_headings = ("Process", "Total", "Used", "Free")
         data = []
         for mline in mstring:
             pattern = re.findall(r'\b(Processor Pool Total|reserve P Pool Total|lsmpi_io Pool Total)\b', mline)
             if pattern:
                 temp = mline.split()
+                print("length is " + str(len(temp)))
                 for i in pattern:
-                    time.sleep(1)
-                    seed(datetime.now)
-                    r_int = randint(0, 100000)
-                    temp.append(str(r_int))
+                    if len(temp) == 8: # Processor Pool and lsmpi_io Pool
+                        temp[0] = temp[0] + " " + temp[1]
+                        temp[2] = temp[2] + " " + temp[3]
+                        temp[4] = temp[4] + " " + temp[5]
+                        temp[5] = temp[6] + " " + temp[7]
+                        del temp[7]
+                        del temp[6]
+                        del temp[3]
+                        del temp[1]
+                    elif len(temp) == 9: # Reserve P Pool
+                        temp[0] = temp[0] + " " + temp[1] + " " + temp[2]
+                        temp[3] = temp[3] + " " + temp[4]
+                        temp[5] = temp[5] + " " + temp[6]
+                        temp[7] = temp[7] + " " + temp[8]
+                        del temp[8]
+                        del temp[6]
+                        del temp[4]
+                        del temp[2]
+                        del temp[1]
+                    # time.sleep(1)
+                    # seed(datetime.now)
+                    # r_int = randint(0, 100000)
+                    # temp.append(str(r_int))
                     data.append(temp)
 
         data = np.array(data, dtype=list)
@@ -190,4 +207,3 @@ if __name__ == "__main__":
     app.run(host="0.0.0.0")
     # accessible by any computer
     # on the network
-
