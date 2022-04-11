@@ -1,0 +1,20 @@
+[
+{
+  "ctx_switches": "207969002",
+  "interrupts": "135415516",
+  "soft_interrupts": "0",
+  "syscalls": "687942128"
+},
+{
+  "ctx_switches": "208723338",
+  "interrupts": "135931571",
+  "soft_interrupts": "0",
+  "syscalls": "689798966"
+},
+{
+  "ctx_switches": "209900985",
+  "interrupts": "136702358",
+  "soft_interrupts": "0",
+  "syscalls": "692339209"
+}
+]

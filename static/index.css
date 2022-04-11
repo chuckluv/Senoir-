@@ -76,3 +76,9 @@ body {
     text-decoration: none;
   }
 
+/* logo */
+
+img {
+  width: 30%;
+  height: auto;
+}
