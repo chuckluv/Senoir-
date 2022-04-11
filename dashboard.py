@@ -9,6 +9,8 @@ import numpy as np
 import time
 import json
 import os
+import uptime
+import boottime
 from datetime import datetime
 from random import seed, randint
 from cpu_statistics import cpu_stats_json, cpu_percent_json, cpu_freq_json, show_processes_cpu_sorted
@@ -31,6 +33,8 @@ def home():
     cpu_percent_json()
     cpu_freq_json()
     output = show_processes_cpu_sorted()
+    print(uptime())
+    print(boottime())
     return render_template("index.html", hostname=hostname, ip=ip, output=output)
 
 
