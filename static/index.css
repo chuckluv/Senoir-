@@ -94,6 +94,8 @@ body {
     color: #444;
     text-decoration: none;
   }
+
+
 .iframes-container{
   padding: 25px;
 }
@@ -105,4 +107,11 @@ iframe{
  border-radius: 15px;
  border-style: ridge;
  box-shadow: 5px 5px #DDDDDD;
+}
+
+/* logo */
+
+img {
+  width: 30%;
+  height: auto;
 }
