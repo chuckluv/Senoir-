@@ -6,11 +6,22 @@
         <title>Show Version</title>
         <link rel="stylesheet" href="/static/version_table_styles.css" />
         <script type='text/javascript'>
-            function clickyClick() {
-                url = '/version/' + document.getElementById("selection").value
-                window.open(url, '_blank');
-            }
-        </script>
+          function clickyClick() {
+              url = '/interface/' + document.getElementById("selection").value
+              window.open(url, '_blank');
+          }
+          // Capture the current theme from local storage and adjust the page to use the current theme.
+          htmlEl = document.getElementsByTagName('html')[0];
+          currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+          if (currentTheme) {
+          htmlEl.dataset.theme = currentTheme;
+          }
+          // When the user changes the theme, we need to save the new value on local storage
+          toggleTheme = (theme) => {
+          htmlEl.dataset.theme = theme;
+          localStorage.setItem('theme', theme);
+          }
+      </script>
     </head>
     <body>
         <table class="table">

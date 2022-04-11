@@ -151,11 +151,11 @@ def show_version():
 @app.route('/interface/<rand_num_str>') # dynamic app route for ip interfaces
 def view(rand_num_str):
     selection = None
-    files = ["templates\show_interface_gigabitethernet000.txt",
-    "templates\show_interface_gigabitethernet001.txt",
-    "templates\show_interface_virtualportgroup0.txt",
-    "templates\show_interface_virtualportgroup0.txt",
-    "templates\show_interface_virtualportgroup1.txt"]
+    files = ["templates/show_interface_gigabitethernet000.txt",
+    "templates/show_interface_gigabitethernet001.txt",
+    "templates/show_interface_virtualportgroup0.txt",
+    "templates/show_interface_virtualportgroup0.txt",
+    "templates/show_interface_virtualportgroup1.txt"]
     if rand_num_str == "0":
         selection = files[0]
     elif rand_num_str == "1":

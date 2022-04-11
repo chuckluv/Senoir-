@@ -1,0 +1,62 @@
+[
+{
+  "ctx_switches": "9504",
+  "interrupts": "704970",
+  "soft_interrupts": "94618423",
+  "syscalls": "1442222"
+},
+{
+  "ctx_switches": "10564",
+  "interrupts": "700537",
+  "soft_interrupts": "94622673",
+  "syscalls": "1444012"
+},
+{
+  "ctx_switches": "10549",
+  "interrupts": "700417",
+  "soft_interrupts": "94623054",
+  "syscalls": "1444034"
+},
+{
+  "ctx_switches": "10108",
+  "interrupts": "700146",
+  "soft_interrupts": "94627839",
+  "syscalls": "1444188"
+},
+{
+  "ctx_switches": "10043",
+  "interrupts": "700303",
+  "soft_interrupts": "94630051",
+  "syscalls": "1444178"
+},
+{
+  "ctx_switches": "11264",
+  "interrupts": "699105",
+  "soft_interrupts": "94631290",
+  "syscalls": "1444149"
+},
+{
+  "ctx_switches": "10250",
+  "interrupts": "700088",
+  "soft_interrupts": "94636378",
+  "syscalls": "1444284"
+},
+{
+  "ctx_switches": "6779",
+  "interrupts": "702724",
+  "soft_interrupts": "94649769",
+  "syscalls": "1445947"
+},
+{
+  "ctx_switches": "9916",
+  "interrupts": "701366",
+  "soft_interrupts": "94651930",
+  "syscalls": "1445893"
+},
+{
+  "ctx_switches": "9020",
+  "interrupts": "702401",
+  "soft_interrupts": "94653564",
+  "syscalls": "1445843"
+}
+]
