@@ -1,5 +1,6 @@
 [
 {
+<<<<<<< HEAD
   "cpu_percent": "19.3"
 },
 {
@@ -28,5 +29,11 @@
 },
 {
   "cpu_percent": "26.2"
+=======
+  "cpu_percent": "30.8"
+},
+{
+  "cpu_percent": "17.7"
+>>>>>>> 050b643dad0baa7c42ebd2f4df994ffca2877f03
 }
 ]

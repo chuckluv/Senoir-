@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<link rel="stylesheet" href="/static/index.css" />
 <script type=text/javascript>
     function cpuRefresh(){
         $.getJSON('home',function () { // background_process_timed_cpu' corresponds to app route
@@ -13,6 +14,17 @@
         cpuRefresh() // this will run after every 5 seconds
     }, 5000); // time in ms
     // end block
+    // Capture the current theme from local storage and adjust the page to use the current theme.
+    const htmlEl = document.getElementsByTagName('html')[0];
+    const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+    if (currentTheme) {
+        htmlEl.dataset.theme = currentTheme;
+        }
+    // When the user changes the theme, we need to save the new value on local storage
+    const toggleTheme = (theme) => {
+        htmlEl.dataset.theme = theme;
+        localStorage.setItem('theme', theme);
+        }
 </script>
 
 <script src="http://code.highcharts.com/highcharts.js"></script>
@@ -25,6 +37,21 @@
     <title>Guest Shell Dashboard</title>
 </head>
 <body>
+    <script type=text/javascript>
+        // Capture the current theme from local storage and adjust the page to use the current theme.
+        const htmlEl = document.getElementsByTagName('html')[0];
+        const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+        if (currentTheme) {
+            htmlEl.dataset.theme = currentTheme;
+            }
+        // When the user changes the theme, we need to save the new value on local storage
+        const toggleTheme = (theme) => {
+            htmlEl.dataset.theme = theme;
+            localStorage.setItem('theme', theme);
+            }
+    </script>
+    <button onclick="toggleTheme('dark');">Dark</button> 
+    <button onclick="toggleTheme('light');">Light Mode</button>
     <div class="logo">
         <img src="static\1200px-Cisco_logo_blue_2016.png" alt="Cisco Logo">
     </div>

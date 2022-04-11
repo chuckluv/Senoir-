@@ -4,6 +4,19 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width", initial-scale="1.0" />
         <link rel="stylesheet" href="/static/view_interface_table_styles.css" />
+        <script type='text/javascript'>
+            // Capture the current theme from local storage and adjust the page to use the current theme.
+            htmlEl = document.getElementsByTagName('html')[0];
+            currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+            if (currentTheme) {
+            htmlEl.dataset.theme = currentTheme;
+            }
+            // When the user changes the theme, we need to save the new value on local storage
+            toggleTheme = (theme) => {
+            htmlEl.dataset.theme = theme;
+            localStorage.setItem('theme', theme);
+            }
+        </script>
     </head>
     <body>
         <h1>Viewing Interface</h1>
