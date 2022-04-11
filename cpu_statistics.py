@@ -4,9 +4,7 @@ from textwrap import indent
 from flask import Flask, render_template, url_for
 from subprocess import check_output
 import psutil # before running pip install psutil
-import time
 
-# print("CPU Percent\n" + str(psutil.cpu_percent()))
 def cpu_percent_json():
     value = None
     while 1:
@@ -25,10 +23,8 @@ def cpu_percent_json():
     with open("cpu_percent_data.json", "r") as percent_file:
         percent_file_len = len(percent_file.readlines())
         percent_file.close()
-    # print(cpu_file_len)
 
     if percent_file_len == 0:
-        # print("file length is: " + str(percent_file_len))
         jsonFile = open("cpu_percent_data.json", "a")
         jsonString = json.dumps(cpuPercentDict, indent=2)
         jsonFile.write("[\n" + jsonString + "\n]")
@@ -37,8 +33,11 @@ def cpu_percent_json():
         with open("cpu_percent_data.json", "r+") as percent_file:
             percent_file.truncate()
             percent_file.close()
+    elif percent_file_len > 32: # Fail-safe for file length
+        with open("cpu_percent_data.json", "r+") as percent_file:
+            percent_file.truncate()
+            percent_file.close()
     else:
-        # print("file length is: " + str(percent_file_len))
         fd=open("cpu_percent_data.json","r")
         d=fd.read()
         fd.close()
@@ -48,14 +47,12 @@ def cpu_percent_json():
         for i in range(len(s)):
             fd.write(s[i])
         fd.close()
-        # print("last line removed, file length is: " + str(percent_file_len))
         jsonString = json.dumps(cpuPercentDict, indent=2)
         jsonFile = open("cpu_percent_data.json", "a")
         jsonFile.write(",\n" + jsonString + "\n]")
         jsonFile.close()
 
 
-# print("CPU Stats\n" + str(psutil.cpu_stats()))
 def cpu_stats_json():
     value = None
     while 1:
@@ -98,10 +95,8 @@ def cpu_stats_json():
     with open("data.json", "r") as cpu_file:
         cpu_file_len = len(cpu_file.readlines())
         cpu_file.close()
-    # print(cpu_file_len)
 
     if cpu_file_len == 0:
-        # print("file length is: " + str(cpu_file_len))
         jsonFile = open("data.json", "a")
         jsonString = json.dumps(cpuStatDict, indent=2)
         jsonFile.write("[\n" + jsonString + "\n]")
@@ -110,8 +105,11 @@ def cpu_stats_json():
         with open("data.json", "r+") as cpu_file:
             cpu_file.truncate()
             cpu_file.close()
+    elif cpu_file_len > 62: # Fail-safe for file length
+        with open("data.json", "r+") as cpu_file:
+            cpu_file.truncate()
+            cpu_file.close()
     else:
-        # print("file length is: " + str(cpu_file_len))
         fd=open("data.json","r")
         d=fd.read()
         fd.close()
@@ -121,7 +119,6 @@ def cpu_stats_json():
         for i in range(len(s)):
             fd.write(s[i])
         fd.close()
-        # print("last line removed, file length is: " + str(cpu_file_len))
         jsonString = json.dumps(cpuStatDict, indent=2)
         jsonFile = open("data.json", "a")
         jsonFile.write(",\n" + jsonString + "\n]")
@@ -169,10 +166,8 @@ def cpu_freq_json():
     with open("cpu_frequency.json", "r") as freq_file:
         freq_file_len = len(freq_file.readlines())
         freq_file.close()
-    # print(freq_file_len)
 
     if freq_file_len == 0:
-        # print("file length is: " + str(freq_file_len))
         jsonFile = open("cpu_frequency.json", "a")
         jsonString = json.dumps(cpuFrequencyDict, indent=2)
         jsonFile.write("[\n" + jsonString + "\n]")
@@ -181,8 +176,11 @@ def cpu_freq_json():
         with open("cpu_frequency.json", "r+") as freq_file:
             freq_file.truncate()
             freq_file.close()
+    elif freq_file_len > 52: # Fail-safe for file length 
+        with open("cpu_frequency.json", "r+") as freq_file:
+            freq_file.truncate()
+            freq_file.close()
     else:
-        # print("file length is: " + str(freq_file_len))
         fd=open("cpu_frequency.json","r")
         d=fd.read()
         fd.close()
@@ -192,7 +190,6 @@ def cpu_freq_json():
         for i in range(len(s)):
             fd.write(s[i])
         fd.close()
-        # print("last line removed, file length is: " + str(cpu_file_len))
         jsonString = json.dumps(cpuFrequencyDict, indent=2)
         jsonFile = open("cpu_frequency.json", "a")
         jsonFile.write(",\n" + jsonString + "\n]")
