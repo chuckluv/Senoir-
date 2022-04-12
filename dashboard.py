@@ -9,8 +9,6 @@ import numpy as np
 import time
 import json
 import os
-import uptime
-import boottime
 from datetime import datetime
 from random import seed, randint
 from cpu_statistics import cpu_stats_json, cpu_percent_json, cpu_freq_json, show_processes_cpu_sorted
@@ -33,8 +31,6 @@ def home():
     cpu_percent_json()
     cpu_freq_json()
     output = show_processes_cpu_sorted()
-    print(uptime())
-    print(boottime())
     return render_template("index.html", hostname=hostname, ip=ip, output=output)
 
 
@@ -106,7 +102,7 @@ def show_proc_mem_sorted():
         # mem_headings = np.array(mem_headings)
         # mem_headings = np.append(mem_headings, "ID")
         # mem_headings = tuple(mem_headings)#makes tuple
-        mem_headings = ("Process", "Total", "Used", "Free")
+        mem_headings = ("Memory Details", "Total", "Used", "Free")
         data = []
         for mline in mstring:
             pattern = re.findall(r'\b(Processor Pool Total|reserve P Pool Total|lsmpi_io Pool Total)\b', mline)
@@ -172,11 +168,11 @@ def show_version():
 @app.route('/interface/<rand_num_str>') # dynamic app route for ip interfaces
 def view(rand_num_str):
     selection = None
-    files = ["templates/show_interface_gigabitethernet000.txt",
-    "templates/show_interface_gigabitethernet001.txt",
-    "templates/show_interface_virtualportgroup0.txt",
-    "templates/show_interface_virtualportgroup0.txt",
-    "templates/show_interface_virtualportgroup1.txt"]
+    files = ["templates\show_interface_gigabitethernet000.txt",
+    "templates\show_interface_gigabitethernet001.txt",
+    "templates\show_interface_virtualportgroup0.txt",
+    "templates\show_interface_virtualportgroup0.txt",
+    "templates\show_interface_virtualportgroup1.txt"]
     if rand_num_str == "0":
         selection = files[0]
     elif rand_num_str == "1":
