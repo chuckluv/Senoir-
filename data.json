@@ -1,56 +1,62 @@
 [
 {
-  "ctx_switches": "481449",
-  "interrupts": "642617",
-  "soft_interrupts": "118815609",
-  "syscalls": "1099720"
+  "ctx_switches": "387985",
+  "interrupts": "676476",
+  "soft_interrupts": "131461207",
+  "syscalls": "1453666"
 },
 {
-  "ctx_switches": "480999",
-  "interrupts": "642426",
-  "soft_interrupts": "118821007",
-  "syscalls": "1099883"
+  "ctx_switches": "383480",
+  "interrupts": "682068",
+  "soft_interrupts": "131472419",
+  "syscalls": "1452776"
 },
 {
-  "ctx_switches": "478293",
-  "interrupts": "642508",
-  "soft_interrupts": "118823902",
-  "syscalls": "1101201"
+  "ctx_switches": "392314",
+  "interrupts": "677854",
+  "soft_interrupts": "131477782",
+  "syscalls": "1451039"
 },
 {
-  "ctx_switches": "478399",
-  "interrupts": "642399",
-  "soft_interrupts": "118823960",
-  "syscalls": "1101207"
+  "ctx_switches": "385986",
+  "interrupts": "680568",
+  "soft_interrupts": "131492770",
+  "syscalls": "1452015"
 },
 {
-  "ctx_switches": "475797",
-  "interrupts": "643246",
-  "soft_interrupts": "118830659",
-  "syscalls": "1102140"
+  "ctx_switches": "386848",
+  "interrupts": "680543",
+  "soft_interrupts": "131497292",
+  "syscalls": "1451991"
 },
 {
-  "ctx_switches": "475947",
-  "interrupts": "643245",
-  "soft_interrupts": "118831046",
-  "syscalls": "1102129"
+  "ctx_switches": "389012",
+  "interrupts": "677943",
+  "soft_interrupts": "131505044",
+  "syscalls": "1451966"
 },
 {
-  "ctx_switches": "475750",
-  "interrupts": "643244",
-  "soft_interrupts": "118831117",
-  "syscalls": "1102128"
+  "ctx_switches": "386341",
+  "interrupts": "677789",
+  "soft_interrupts": "131511061",
+  "syscalls": "1453418"
 },
 {
-  "ctx_switches": "478294",
-  "interrupts": "662820",
-  "soft_interrupts": "118838798",
-  "syscalls": "1091038"
+  "ctx_switches": "388655",
+  "interrupts": "676966",
+  "soft_interrupts": "131512528",
+  "syscalls": "1452427"
 },
 {
-  "ctx_switches": "477324",
-  "interrupts": "662814",
-  "soft_interrupts": "118846485",
-  "syscalls": "1091147"
+  "ctx_switches": "389044",
+  "interrupts": "676496",
+  "soft_interrupts": "131518178",
+  "syscalls": "1453142"
+},
+{
+  "ctx_switches": "386330",
+  "interrupts": "676623",
+  "soft_interrupts": "131527469",
+  "syscalls": "1453473"
 }
 ]

@@ -109,6 +109,11 @@ iframe{
  box-shadow: 5px 5px #DDDDDD;
 }
 
+.container-fluid {
+  padding: 35px;
+  
+}
+
 /* logo */
 
 img {

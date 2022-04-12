@@ -19,11 +19,12 @@
           // If theme changes save theme
           changeTheme = (theme) => {
             htmlType.dataset.theme = theme;
-            localStorage.setItem('theme', theme);
           }
       </script>
     </head>
     <body>
+      <button onclick="changeTheme('dark');">Dark</button> 
+      <button onclick="changeTheme('light');">Light</button>
         <table class="table">
           <thead>
             <tr>

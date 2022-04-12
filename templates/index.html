@@ -23,7 +23,6 @@
     // If theme changes save theme
     const changeTheme = (theme) => {
     htmlType.dataset.theme = theme;
-    localStorage.setItem('theme', theme);
     }
 </script>
 
@@ -37,19 +36,6 @@
     <title>Guest Shell Dashboard</title>
 </head>
 <body>
-    <!--<script type=text/javascript>
-        // Capture the current theme from local storage and adjust the page to use the current theme.
-        const htmlEl = document.getElementsByTagName('html')[0];
-        const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
-        if (currentTheme) {
-            htmlEl.dataset.theme = currentTheme;
-            }
-        // When the user changes the theme, we need to save the new value on local storage
-        const toggleTheme = (theme) => {
-            htmlEl.dataset.theme = theme;
-            localStorage.setItem('theme', theme);
-            }
-    </script>-->
     <button onclick="changeTheme('dark');">Dark</button> 
     <button onclick="changeTheme('light');">Light Mode</button>
     <div class="logo">
@@ -75,6 +61,15 @@
     <iframe src="interface" ></iframe>
     <iframe src="processes" ></iframe>
   </div>
+    <div class="container-fluid">
+        <!-- Example row of columns -->
+        <div class="row">
+            <div class="container-fluid" id="data-container">
+
+            </div>
+        </div>
+    </div>
+
     <div class="container-fluid">
         <!-- Example row of columns -->
         <div class="row">
