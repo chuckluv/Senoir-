@@ -25,7 +25,9 @@
     htmlType.dataset.theme = theme;
     }
 </script> -->
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="http://code.highcharts.com/highcharts.js"></script>
 <script src="http://code.highcharts.com/highcharts-more.js"></script>
 <script src="http://code.highcharts.com/modules/exporting.js"></script>
@@ -47,21 +49,13 @@
         <h3>Local IP Address {{ ip }} </h3>
         <h3> {{ output }} </h3>
     </div>
-
-    <a href="/interface" class="button">Show IP Inteface Brief</a>
-
-    <form action="/interface">
-        <input type="submit" value="Show IP Inteface Brief" />
-    </form>
-
-    <br>
     <br>
     <div class="iframes-container" align="center">
     <iframe src="version" ></iframe>
     <iframe src="interface" ></iframe>
     <iframe src="processes" ></iframe>
   </div>
-    <div class="container-fluid">
+    <div class="container-fluid"> 
         <!-- Example row of columns -->
         <div class="row">
             <div class="container-fluid" id="data-container">
@@ -69,7 +63,7 @@
             </div>
         </div>
     </div>
-
+    <!-- Unused container below -->
     <div class="container-fluid">
         <!-- Example row of columns -->
         <div class="row">
@@ -101,8 +95,7 @@
         var interval = 3000
         function clickyClick() {
             interval = document.getElementById("interval_selection").value
-            alert("interval is " + interval)
-
+            document.getElementById("interval_success_alert").style.visibility ="visible";
         }
 
         function requestData()
@@ -120,8 +113,12 @@
 
                 // add the point
                 chart.series[0].addPoint(result, true, shift);
-                if(parseInt(result) > 30 ) {
-                    alert("CPU usage is high.")
+                // alert
+                if(parseInt(result[1]) > 30 ) {
+                    document.getElementById("cpu_warning_alert").style.visibility ="visible";
+                }
+                else {
+                   
                 }
 
                 // call it again after one second
@@ -169,6 +166,16 @@
             <input type="text" name="interval_selection" id="interval_selection">
           </form>
           <button onclick="clickyClick()">Set Interval</button>
+    </div>
+
+    <div id="interval_success_alert" class="alert alert-success alert-dismissible fade in" style='visibility:hidden'>
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Success!</strong> The interval has been changed.
+    </div>
+
+    <div id="cpu_warning_alert" class="alert alert-warning alert-dismissible fade in" style='visibility:hidden'>
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Warning!</strong> CPU usage is high.
     </div>
 </body>
 </html>
