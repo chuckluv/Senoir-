@@ -5,20 +5,26 @@
         <meta name="viewport" content="width=device-width", initial-scale="1.0" />
         <link rel="stylesheet" href="/static/view_interface_table_styles.css" />
         <script type='text/javascript'>
-            // Capture the current theme from local storage and adjust the page to use the current theme.
-            htmlEl = document.getElementsByTagName('html')[0];
+            function clickyClick() {
+                url = '/interface';
+                window.open(url, '_blank');
+            }
+            //Get theme from localstorage and have page use current theme
+            htmlType = document.getElementsByTagName('html')[0];
             currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
             if (currentTheme) {
-            htmlEl.dataset.theme = currentTheme;
+               htmlType.dataset.theme = currentTheme;
             }
-            // When the user changes the theme, we need to save the new value on local storage
-            toggleTheme = (theme) => {
-            htmlEl.dataset.theme = theme;
-            localStorage.setItem('theme', theme);
+            // If theme changes save theme
+            changeTheme = (theme) => {
+                htmlType.dataset.theme = theme;
+                localStorage.setItem('theme', theme);
             }
         </script>
     </head>
     <body>
+        <button onClick="clickyClick()">Back</button>
+        <button onclick=""
         <h1>Viewing Interface</h1>
         <p> {{ p1 }} </p>
         <!-- <p>{{ p2 }} </p> -->

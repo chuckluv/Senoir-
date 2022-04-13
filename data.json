@@ -1,14 +1,20 @@
 [
 {
-  "ctx_switches": "2249811308",
-  "interrupts": "1480807974",
+  "ctx_switches": "2031670605",
+  "interrupts": "1298918953",
   "soft_interrupts": "0",
-  "syscalls": "2199618505"
+  "syscalls": "2012742515"
 },
 {
-  "ctx_switches": "2250075877",
-  "interrupts": "1480961447",
+  "ctx_switches": "2032059061",
+  "interrupts": "1299221402",
   "soft_interrupts": "0",
-  "syscalls": "2203326206"
+  "syscalls": "2014244242"
+},
+{
+  "ctx_switches": "2035228380",
+  "interrupts": "1301883471",
+  "soft_interrupts": "0",
+  "syscalls": "2024688548"
 }
 ]

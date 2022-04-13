@@ -16,6 +16,7 @@
   
   h1, h2, p {
 	color: var(--color-primary);
+  text-align: center;
   }
 body {
     margin: 0;
@@ -107,6 +108,11 @@ iframe{
  border-radius: 15px;
  border-style: ridge;
  box-shadow: 5px 5px #DDDDDD;
+}
+
+.container-fluid {
+  padding: 35px;
+  
 }
 
 /* logo */

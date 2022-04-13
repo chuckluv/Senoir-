@@ -6,6 +6,7 @@ from subprocess import check_output
 import psutil # before running pip install psutil
 
 def cpu_percent_json():
+    print("running cpu percent")
     value = None
     while 1:
         if value == None:
@@ -29,14 +30,17 @@ def cpu_percent_json():
         jsonString = json.dumps(cpuPercentDict, indent=2)
         jsonFile.write("[\n" + jsonString + "\n]")
         jsonFile.close()
+        print("creating file")
     elif percent_file_len == 32: # Length is x = 10 items ((x-1)*3)+5
         with open("cpu_percent_data.json", "r+") as percent_file:
             percent_file.truncate()
             percent_file.close()
+            print("File length == 32 truncating")
     elif percent_file_len > 32: # Fail-safe for file length
         with open("cpu_percent_data.json", "r+") as percent_file:
             percent_file.truncate()
             percent_file.close()
+            print("File length > 32 truncating")
     else:
         fd=open("cpu_percent_data.json","r")
         d=fd.read()
@@ -51,7 +55,7 @@ def cpu_percent_json():
         jsonFile = open("cpu_percent_data.json", "a")
         jsonFile.write(",\n" + jsonString + "\n]")
         jsonFile.close()
-
+        print("writing to file")
 
 def cpu_stats_json():
     value = None

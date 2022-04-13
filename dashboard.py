@@ -9,6 +9,7 @@ import numpy as np
 import time
 import json
 import os
+from uptime import boottime, uptime
 from datetime import datetime
 from random import seed, randint
 from cpu_statistics import cpu_stats_json, cpu_percent_json, cpu_freq_json, show_processes_cpu_sorted
@@ -108,7 +109,6 @@ def show_proc_mem_sorted():
             pattern = re.findall(r'\b(Processor Pool Total|reserve P Pool Total|lsmpi_io Pool Total)\b', mline)
             if pattern:
                 temp = mline.split()
-                print("length is " + str(len(temp)))
                 for i in pattern:
                     if len(temp) == 8: # Processor Pool and lsmpi_io Pool
                         temp[0] = temp[0] + " " + temp[1]

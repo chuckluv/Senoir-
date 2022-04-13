@@ -2,7 +2,7 @@
 <html lang="en">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <link rel="stylesheet" href="/static/index.css" />
-<script type=text/javascript>
+<!-- <script type=text/javascript>
     function cpuRefresh(){
         $.getJSON('home',function () { // background_process_timed_cpu' corresponds to app route
             $(this).unwrap();
@@ -14,18 +14,17 @@
         cpuRefresh() // this will run after every 5 seconds
     }, 5000); // time in ms
     // end block
-    // Capture the current theme from local storage and adjust the page to use the current theme.
-    const htmlEl = document.getElementsByTagName('html')[0];
+    //Get theme from localstorage and have page use current theme
+    const htmlType = document.getElementsByTagName('html')[0];
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
     if (currentTheme) {
-        htmlEl.dataset.theme = currentTheme;
-        }
-    // When the user changes the theme, we need to save the new value on local storage
-    const toggleTheme = (theme) => {
-        htmlEl.dataset.theme = theme;
-        localStorage.setItem('theme', theme);
-        }
-</script>
+        htmlType.dataset.theme = currentTheme;
+    }
+    // If theme changes save theme
+    const changeTheme = (theme) => {
+    htmlType.dataset.theme = theme;
+    }
+</script> -->
 
 <script src="http://code.highcharts.com/highcharts.js"></script>
 <script src="http://code.highcharts.com/highcharts-more.js"></script>
@@ -37,21 +36,8 @@
     <title>Guest Shell Dashboard</title>
 </head>
 <body>
-    <script type=text/javascript>
-        // Capture the current theme from local storage and adjust the page to use the current theme.
-        const htmlEl = document.getElementsByTagName('html')[0];
-        const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
-        if (currentTheme) {
-            htmlEl.dataset.theme = currentTheme;
-            }
-        // When the user changes the theme, we need to save the new value on local storage
-        const toggleTheme = (theme) => {
-            htmlEl.dataset.theme = theme;
-            localStorage.setItem('theme', theme);
-            }
-    </script>
-    <button onclick="toggleTheme('dark');">Dark</button> 
-    <button onclick="toggleTheme('light');">Light Mode</button>
+    <button onclick="changeTheme('dark');">Dark</button> 
+    <button onclick="changeTheme('light');">Light Mode</button>
     <div class="logo">
         <img src="static\1200px-Cisco_logo_blue_2016.png" alt="Cisco Logo">
     </div>
@@ -84,11 +70,45 @@
         </div>
     </div>
 
+    <div class="container-fluid">
+        <!-- Example row of columns -->
+        <div class="row">
+            <div class="container-fluid" id="data-container">
+
+            </div>
+        </div>
+    </div>
+
     <script>
+        function cpuRefresh(){
+            $.getJSON('home',function () { // background_process_timed_cpu' corresponds to app route
+                $(this).unwrap();
+            });
+        }
+
+        cpuRefresh(); // This will run on page load, calls cpuRefresh function above, that then calls to the app route in dashboard.py
+        const htmlType = document.getElementsByTagName('html')[0];
+        const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+        if (currentTheme) {
+            htmlType.dataset.theme = currentTheme;
+        }
+        // If theme changes save theme
+        const changeTheme = (theme) => {
+        htmlType.dataset.theme = theme;
+        }
+
         var chart;
+        var interval = 3000
+        function clickyClick() {
+            interval = document.getElementById("interval_selection").value
+            alert("interval is " + interval)
+
+        }
 
         function requestData()
         {
+            
+            cpuRefresh()
             // Ajax call to get the Data from Flask
             var requests = $.get('/graph_data');
 
@@ -100,11 +120,15 @@
 
                 // add the point
                 chart.series[0].addPoint(result, true, shift);
+                if(parseInt(result) > 30 ) {
+                    alert("CPU usage is high.")
+                }
 
                 // call it again after one second
-                setTimeout(requestData, 5000);
+                setTimeout(requestData, interval);
             });
         }
+
 
         $(document).ready(function() {
             chart = new Highcharts.Chart({
@@ -139,5 +163,12 @@
 
         });
     </script>
+
+    <div>
+        <form>Change Graph Interval in ms:
+            <input type="text" name="interval_selection" id="interval_selection">
+          </form>
+          <button onclick="clickyClick()">Set Interval</button>
+    </div>
 </body>
 </html>
