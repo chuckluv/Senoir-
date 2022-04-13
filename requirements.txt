@@ -9,5 +9,5 @@ psutil==5.9.0
 typing_extensions==4.1.1
 Werkzeug==2.0.3
 zipp==3.7.0
-numpy==1.22.3
+numpy==1.21.5
 uptime==3.0.1

@@ -18,12 +18,13 @@
             // If theme changes save theme
             changeTheme = (theme) => {
                 htmlType.dataset.theme = theme;
-                localStorage.setItem('theme', theme);
             }
         </script>
     </head>
     <body>
         <button onClick="clickyClick()">Back</button>
+        <button onclick="changeTheme('dark');">Dark</button> 
+        <button onclick="changeTheme('light');">Light</button>
         <button onclick=""
         <h1>Viewing Interface</h1>
         <p> {{ p1 }} </p>
