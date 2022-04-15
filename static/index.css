@@ -10,7 +10,7 @@
   
   html {
 	transition: color 300ms, background-color 300ms;
-	background: var(--background-primary);
+	background-color: var(--background-primary);
 	color: var(--color-primary);
   }
   
@@ -23,7 +23,7 @@ body {
     padding: 20px;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #444;
-    background-color:#333 ;
+    background-color:var(--background-primary) ;
   }
   /*
    * Formatting the header area
