@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width", initial-scale="1.0" />
         <title>Interface Table</title>
         <link rel="stylesheet" href="/static/interface_table_styles.css" />
+        <script src="https://kit.fontawesome.com/9ec57ffb64.js" crossorigin="anonymous"></script>
         <script type='text/javascript'>
             function clickyClick() {
                 url = '/interface/' + document.getElementById("selection").value
@@ -27,9 +28,11 @@
         </script>
     </head>
     <body>
-        <button onClick="homeClickyClick()">Home</button>
-        <button onclick="changeTheme('dark');">Dark</button> 
-        <button onclick="changeTheme('light');">Light</button>
+        <button class="home_btn" onClick="homeClickyClick()">
+            <i class="fa-solid fa-house"></i>
+        </button>
+        <button class="dark_btn"onclick="changeTheme('dark');">Dark</button> 
+        <button class="lit_btn"onclick="changeTheme('light');">Light</button>
         <table class="table">
             <tr class="table__header">
                 {% for header in headings %}
@@ -49,6 +52,6 @@
             <input type="text" name="selection" id="selection">
           </form>
           <br>
-          <button onclick="clickyClick()">View Interface</button>
+          <button class="int_btn" onclick="clickyClick()">View Interface</button>
     </body>
 </html>

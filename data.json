@@ -1,14 +1,8 @@
 [
 {
-  "ctx_switches": "2215969700",
-  "interrupts": "1428464096",
+  "ctx_switches": "1200370961",
+  "interrupts": "624611035",
   "soft_interrupts": "0",
-  "syscalls": "2748358689"
-},
-{
-  "ctx_switches": "2216473042",
-  "interrupts": "1428723881",
-  "soft_interrupts": "0",
-  "syscalls": "2749852702"
+  "syscalls": "3052007962"
 }
 ]

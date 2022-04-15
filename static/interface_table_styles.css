@@ -5,13 +5,13 @@
   
   html[data-theme='dark'] {
 	--background-primary:  #333;
-	--color-primary: #ccc;
+  --color-primary: #ffffff;
   }
   
   html {
 	transition: color 300ms, background-color 300ms;
 	background: var(--background-primary);
-	color: var(--color-primary);
+	/*color: var(--color-primary);*/
   }
   
   h1, h2, p {
@@ -35,3 +35,73 @@ tr:nth-child(even) {
 .table__cell {
     padding: 16px;
 }
+
+form{
+  color: var(--color-primary);
+  font-size: x-large;
+}
+/* Interval Button */
+.int_btn{
+  background-color: #049fd4;
+  text-decoration: none;
+  color: #DDDDDD;
+  border-radius: 25px;
+  transition: transform 0.3s ease;
+  border-style: none;
+  width:fit-content;
+  font-size: large;
+  padding:10px;
+}
+.int_btn:hover{
+  box-shadow: 0px 5px 50px 0 #049fd4 inset, 0px 5px 10px 0 #049fd4,
+              0px 5px 50px 0 #049fd4 inset, 0px 5px 50px 0 #049fd4;
+}
+
+.home_btn{
+  background-color: #049fd4;
+  text-decoration: none;
+  color: #DDDDDD;
+  border-radius: 25px;
+  transition: transform 0.3s ease;
+  border-style: none;
+  width:fit-content;
+  font-size: large;
+  padding:10px;
+}
+.home_btn:hover{
+  box-shadow: 0px 5px 50px 0 #049fd4 inset, 0px 5px 10px 0 #049fd4,
+              0px 5px 50px 0 #049fd4 inset, 0px 5px 50px 0 #049fd4;
+}
+
+.dark_btn{
+	background-color: black;
+	text-decoration: none;
+	color: #DDDDDD;
+	border-radius: 25px;
+	transition: transform 0.3s ease;
+	border-style: none;
+	width:fit-content;
+	font-size: large;
+	padding:10px;
+  }
+  
+  .dark_btn:hover{
+	box-shadow: 0px 5px 50px 0 black inset, 0px 5px 10px 0 black,
+				0px 5px 50px 0 black inset, 0px 5px 50px 0 black;
+  }
+  .lit_btn{
+	background-color: #DDDDDD;
+	text-decoration: none;
+	color: black;
+	border-radius: 25px;
+	transition: transform 0.3s ease;
+	border-style: none;
+	width:fit-content;
+	font-size: large;
+	padding:10px;
+  }
+  
+  .lit_btn:hover{
+	box-shadow: 0px 5px 50px 0 #DDDDDD inset, 0px 5px 10px 0 #DDDDDD,
+				0px 5px 50px 0 #DDDDDD inset, 0px 5px 50px 0 #DDDDDD;
+  }

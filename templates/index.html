@@ -38,8 +38,8 @@
     <title>Guest Shell Dashboard</title>
 </head>
 <body>
-    <button onclick="changeTheme('dark');">Dark</button> 
-    <button onclick="changeTheme('light');">Light Mode</button>
+    <button class= "dark_btn"onclick="changeTheme('dark');">Dark</button> 
+    <button class="lit_btn"onclick="changeTheme('light');">Light Mode</button>
     <div class="logo">
         <img src="static\1200px-Cisco_logo_blue_2016.png" alt="Cisco Logo">
     </div>
@@ -50,10 +50,16 @@
         <h3> {{ output }} </h3>
     </div>
     <br>
-    <div class="iframes-container" align="center">
+    <div class="iframes-container">
+       <a href="version">
     <iframe src="version" ></iframe>
+    </a>
+    <a href="interface">
     <iframe src="interface" ></iframe>
+    </a>
+    <a href="processes">
     <iframe src="processes" ></iframe>
+    </a>
   </div>
     <div class="container-fluid"> 
         <!-- Example row of columns -->
@@ -165,7 +171,7 @@
         <form>Change Graph Interval in ms:
             <input type="text" name="interval_selection" id="interval_selection">
           </form>
-          <button onclick="clickyClick()">Set Interval</button>
+          <button class="int_btn" onclick="clickyClick()">Set Interval</button>
     </div>
 
     <div id="interval_success_alert" class="alert alert-success alert-dismissible fade in" style='visibility:hidden'>

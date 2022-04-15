@@ -11,7 +11,7 @@
   html {
 	transition: color 300ms, background-color 300ms;
 	background: var(--background-primary);
-	color: var(--color-primary);
+	
   }
   
   h1, h2, p {
@@ -41,3 +41,41 @@ tr:nth-child(even) {
 .table__cell {
     padding: 16px;
 }
+body{
+	padding: 5px;
+}
+button{
+	margin-bottom: 10px;
+}
+.dark_btn{
+	background-color: black;
+	text-decoration: none;
+	color: #DDDDDD;
+	border-radius: 25px;
+	transition: transform 0.3s ease;
+	border-style: none;
+	width:fit-content;
+	font-size: large;
+	padding:10px;
+  }
+  
+  .dark_btn:hover{
+	box-shadow: 0px 5px 50px 0 black inset, 0px 5px 10px 0 black,
+				0px 5px 50px 0 black inset, 0px 5px 50px 0 black;
+  }
+  .lit_btn{
+	background-color: #DDDDDD;
+	text-decoration: none;
+	color: black;
+	border-radius: 25px;
+	transition: transform 0.3s ease;
+	border-style: none;
+	width:fit-content;
+	font-size: large;
+	padding:10px;
+  }
+  
+  .lit_btn:hover{
+	box-shadow: 0px 5px 50px 0 #DDDDDD inset, 0px 5px 10px 0 #DDDDDD,
+				0px 5px 50px 0 #DDDDDD inset, 0px 5px 50px 0 #DDDDDD;
+  }

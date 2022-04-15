@@ -4,6 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width", initial-scale="1.0" />
         <link rel="stylesheet" href="/static/view_interface_table_styles.css" />
+        <script src="https://kit.fontawesome.com/9ec57ffb64.js" crossorigin="anonymous"></script>
         <script type='text/javascript'>
             function clickyClick() {
                 url = '/interface';
@@ -22,13 +23,16 @@
         </script>
     </head>
     <body>
-        <button onClick="clickyClick()">Back</button>
-        <button onclick="changeTheme('dark');">Dark</button> 
-        <button onclick="changeTheme('light');">Light</button>
-        <button onclick=""
+        <button class="back_btn" onClick="clickyClick()">
+            <i class="fa-solid fa-angle-left"></i>
+        </button>
+        <button class="dark_btn"onclick="changeTheme('dark');">Dark</button> 
+        <button class="lit_btn"onclick="changeTheme('light');">Light</button>
+        <div class="header">
         <h1>Viewing Interface</h1>
         <p> {{ p1 }} </p>
         <!-- <p>{{ p2 }} </p> -->
+    </div>
         <br>
         <table class="table">
             <tr class="table__header">
