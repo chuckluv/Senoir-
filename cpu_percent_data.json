@@ -1,8 +1,32 @@
 [
 {
-  "cpu_percent": "19.2"
+  "cpu_percent": "8.6"
 },
 {
-  "cpu_percent": "18.1"
+  "cpu_percent": "6.6"
+},
+{
+  "cpu_percent": "8.1"
+},
+{
+  "cpu_percent": "8.9"
+},
+{
+  "cpu_percent": "11.2"
+},
+{
+  "cpu_percent": "15.0"
+},
+{
+  "cpu_percent": "19.4"
+},
+{
+  "cpu_percent": "16.0"
+},
+{
+  "cpu_percent": "17.5"
+},
+{
+  "cpu_percent": "13.7"
 }
 ]

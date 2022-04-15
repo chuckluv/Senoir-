@@ -23,6 +23,7 @@ body {
     padding: 20px;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #444;
+    background-color:#333 ;
   }
   /*
    * Formatting the header area
@@ -145,6 +146,7 @@ img {
 
 form{
   font-size: x-large;
+  color: var(--color-primary);
 }
 
 .dark_btn{
@@ -178,4 +180,8 @@ form{
   .lit_btn:hover{
 	box-shadow: 0px 5px 50px 0 #DDDDDD inset, 0px 5px 10px 0 #DDDDDD,
 				0px 5px 50px 0 #DDDDDD inset, 0px 5px 50px 0 #DDDDDD;
+  }
+
+  a{
+    border-style: none;
   }
